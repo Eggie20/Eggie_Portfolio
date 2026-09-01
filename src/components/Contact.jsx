@@ -106,18 +106,18 @@ export default function Contact() {
                 className="directory-item"
               >
                 <span>[LINK] github.lnk</span>
-                <span style={{ opacity: 0.5 }}>→ github.com/eggie</span>
+                <span style={{ opacity: 0.5 }}>→ github.com/Eggie20</span>
               </a>
               
               <a 
-                href="https://linkedin.com/in/eggie" 
+                href="https://www.linkedin.com/in/arnel-jr-mandas-32b1b635b" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 style={{ display: 'flex', justifyContent: 'space-between', color: 'inherit', textDecoration: 'none' }}
                 className="directory-item"
               >
                 <span>[LINK] linkedin.lnk</span>
-                <span style={{ opacity: 0.5 }}>→ linkedin.com/in/eggie</span>
+                <span style={{ opacity: 0.5 }}>→ linkedin.com/in/arnel-jr-mandas</span>
               </a>
               
               <div 
@@ -126,7 +126,7 @@ export default function Contact() {
                 className="directory-item"
               >
                 <span>[LINK] email.lnk</span>
-                <span style={{ opacity: 0.5 }}>→ send message</span>
+                <span style={{ opacity: 0.5 }}>→ arnelcmandas15@gmail.com</span>
               </div>
             </div>
             

@@ -107,22 +107,6 @@ const PROJECTS_DATA = [
   },
   {
     num: "04",
-    title: "Project Four",
-    role: "Developer",
-    tags: ["Node.js", "Express"],
-    filled: 2,
-    statusLabel: "TBD",
-    hoverText: '"Project Four details to be announced."',
-    gridClass: "",
-    style: { gridColumn: "span 1" },
-    link: "#",
-    github: "#",
-    images: [],
-    imageCaptions: [],
-    features: ["Project description and feature list will be updated soon."]
-  },
-  {
-    num: "05",
     title: "Codex Reference Library",
     role: "Lead Developer & Designer",
     tags: ["React", "Vite", "Vanilla CSS", "Design System"],
@@ -160,7 +144,7 @@ const PROJECTS_DATA = [
     ]
   },
   {
-    num: "06",
+    num: "05",
     title: "MagTable — Kaon Mag Food Delivery",
     role: "Lead Full-Stack Developer",
     tags: ["React", "Vite", "FastAPI", "Leaflet", "Turf.js", "Podman"],
@@ -189,7 +173,7 @@ const PROJECTS_DATA = [
     ]
   },
   {
-    num: "07",
+    num: "06",
     title: "My Github Repo",
     role: "Owner / Maintainer",
     tags: ["Git", "Shell Scripts", "Markdown"],
@@ -209,7 +193,7 @@ const PROJECTS_DATA = [
     ],
     subProjects: [
       {
-        num: "07A",
+        num: "06A",
         title: "My Legacy Portfolio",
         role: "Sole Creator",
         tags: ["HTML5", "Vanilla CSS", "JavaScript"],
