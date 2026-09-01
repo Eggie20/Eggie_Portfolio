@@ -4,7 +4,7 @@ import Avatar from './Avatar';
 const TYPEWRITER_PHRASES = [
   "Full-Stack Developer",
   "UI/UX Designer",
-  "AI Systems Builder"
+  "Machine Learning Systems Builder"
 ];
 
 const BUILDING_PROJECTS = [
