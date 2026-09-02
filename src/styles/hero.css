@@ -4,9 +4,10 @@
 .hero-layout {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   height: 100%;
+  padding: 10px 0;
 }
 
 .hero-main {
@@ -15,7 +16,7 @@
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 40px;
   margin: auto 0;
 }
 
@@ -28,27 +29,27 @@
 
 .hero-name {
   font-family: var(--font-mono);
-  font-size: clamp(2.2rem, 5.8vw, 6.5rem);
+  font-size: clamp(3.2rem, 7.5vw, 7.5rem);
   font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  margin-bottom: 18px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
   text-transform: uppercase;
   word-break: break-word;
 }
 
 .hero-typewriter {
-  font-size: clamp(1.1rem, 2.6vw, 2.2rem);
-  font-weight: 300;
-  min-height: 38px;
+  font-size: clamp(1.35rem, 3.2vw, 2.4rem);
+  font-weight: 400;
+  min-height: 44px;
   height: auto;
   line-height: 1.35;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .hero-location {
-  font-size: clamp(0.85rem, 1.6vw, 1.15rem);
-  opacity: 0.65;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  opacity: 0.7;
   line-height: 1.4;
 }
 
@@ -59,13 +60,13 @@
   border-top: 1px solid var(--border);
   padding-top: 24px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .hero-footer-col {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .hero-footer-col.right {
@@ -81,15 +82,16 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
 }
 
 .blinking-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: var(--text);
-  box-shadow: 0 0 4px var(--text);
+  box-shadow: 0 0 6px var(--text);
   animation: blink-cursor 1s step-end infinite;
 }
 
@@ -99,7 +101,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 20px;
+    gap: 28px;
+    margin: 20px 0;
   }
 
   .hero-text {
@@ -109,14 +112,19 @@
   }
 
   .hero-name {
-    font-size: clamp(2rem, 7.5vw, 4.2rem);
-    margin-bottom: 14px;
+    font-size: clamp(2.8rem, 10vw, 5.2rem);
+    margin-bottom: 16px;
+    line-height: 1.1;
   }
 
   .hero-typewriter {
-    font-size: clamp(1rem, 3.8vw, 1.5rem);
-    min-height: 48px;
-    margin-bottom: 10px;
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    min-height: 52px;
+    margin-bottom: 12px;
+  }
+
+  .hero-location {
+    font-size: clamp(1rem, 3.8vw, 1.25rem);
   }
 
   .hero-footer-grid {
@@ -132,6 +140,6 @@
 
   .open-to-work {
     position: static;
-    margin-top: 20px;
+    margin-top: 24px;
   }
 }

@@ -71,24 +71,24 @@
 
 /* Photographic Avatar Styles */
 .avatar-frame {
-  width: 140px;
-  height: 140px;
-  border: 2px solid var(--text);
+  width: clamp(160px, 25vw, 210px);
+  height: clamp(160px, 25vw, 210px);
+  border: 3px solid var(--text);
   border-radius: 50%;
   overflow: hidden;
   background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 4px 4px 0px var(--text);
+  box-shadow: 6px 6px 0px var(--text);
   transition: all 0.3s ease;
   position: relative;
   z-index: 10;
 }
 
 .avatar-frame:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px var(--text);
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px var(--text);
 }
 
 .avatar-img {
