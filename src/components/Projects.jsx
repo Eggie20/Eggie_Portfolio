@@ -167,7 +167,7 @@ const PROJECTS_DATA = [
     hoverText: '"The official hub of my open-source repositories and development projects."',
     link: "https://github.com/Eggie20",
     github: "https://github.com/Eggie20",
-    images: ["gh-contributions-2026", "gh-contributions-2025"],
+    images: ["git/gh-2026.png", "git/gh-2025.png"],
     imageCaptions: [
       "107 contributions in the last year (2026)",
       "64 contributions in 2025"
