@@ -167,9 +167,13 @@ const PROJECTS_DATA = [
     hoverText: '"The official hub of my open-source repositories and development projects."',
     link: "https://github.com/Eggie20",
     github: "https://github.com/Eggie20",
-    images: [],
-    imageCaptions: [],
+    images: ["gh-contributions-2026", "gh-contributions-2025"],
+    imageCaptions: [
+      "107 contributions in the last year (2026)",
+      "64 contributions in 2025"
+    ],
     features: [
+      "107+ verifiable contributions across production repositories and open-source packages",
       "Organized codebase repositories using standardized Git branch workflows",
       "Automated build and deployment scripts using Bash and container specifications",
       "Comprehensive project documentation and open-source contributions showcase"
@@ -268,8 +272,10 @@ const renderFallbackSVG = (num, imgIdx, totalCount = 4) => {
 
   // GitHub Contributions Heatmap SVG
   if (num === "06") {
-    // Activity map matching the user's GitHub contribution history
-    const activityMap = {
+    const is2025 = imgIdx === 1;
+
+    // Activity map matching 2026 (107 contributions) vs 2025 (64 contributions)
+    const activityMap2026 = {
       4: { 1: '#9be9a8' },
       8: { 4: '#40c463' },
       9: { 6: '#9be9a8' },
@@ -291,6 +297,24 @@ const renderFallbackSVG = (num, imgIdx, totalCount = 4) => {
       36: { 1: '#9be9a8', 2: '#9be9a8', 3: '#9be9a8' }
     };
 
+    const activityMap2025 = {
+      0: { 4: '#40c463' },
+      1: { 1: '#9be9a8' },
+      14: { 2: '#216e39' },
+      16: { 6: '#216e39' },
+      18: { 4: '#40c463' },
+      21: { 6: '#9be9a8' },
+      22: { 3: '#9be9a8', 4: '#40c463' },
+      30: { 1: '#9be9a8' },
+      32: { 6: '#40c463' },
+      33: { 4: '#40c463' },
+      36: { 3: '#216e39', 4: '#40c463' },
+      38: { 2: '#40c463' }
+    };
+
+    const activityMap = is2025 ? activityMap2025 : activityMap2026;
+    const titleText = is2025 ? "64 contributions in 2025" : "107 contributions in the last year";
+
     const cols = 37;
     const rows = 7;
     const squareSize = 4.3;
@@ -298,7 +322,7 @@ const renderFallbackSVG = (num, imgIdx, totalCount = 4) => {
     const startX = 26;
     const startY = 32;
 
-    const months = [
+    const months2026 = [
       { label: 'Sep', x: 26 },
       { label: 'Oct', x: 48 },
       { label: 'Nov', x: 72 },
@@ -313,11 +337,34 @@ const renderFallbackSVG = (num, imgIdx, totalCount = 4) => {
       { label: 'Aug', x: 284 }
     ];
 
+    const months2025 = [
+      { label: 'Jan', x: 26 },
+      { label: 'Feb', x: 50 },
+      { label: 'Mar', x: 74 },
+      { label: 'Apr', x: 100 },
+      { label: 'May', x: 124 },
+      { label: 'Jun', x: 148 },
+      { label: 'Jul', x: 172 },
+      { label: 'Aug', x: 196 },
+      { label: 'Sep', x: 220 },
+      { label: 'Oct', x: 242 },
+      { label: 'Nov', x: 264 },
+      { label: 'Dec', x: 286 }
+    ];
+
+    const months = is2025 ? months2025 : months2026;
+
     return (
       <svg viewBox="0 0 310 115" style={{ width: '100%', height: '100%', display: 'block', padding: '4px' }}>
         {/* Title */}
         <text x="10" y="14" fontSize="7" fontWeight="600" fill="var(--text)" fontFamily="var(--font-mono)">
-          107 contributions in the last year
+          {titleText}
+        </text>
+
+        {/* Year Tag Badge */}
+        <rect x="268" y="5" width="28" height="11" rx="2" fill={is2025 ? "var(--accent)" : "rgba(255,255,255,0.1)"} />
+        <text x="282" y="13" fontSize="4.8" fontWeight="600" fill={is2025 ? "#000" : "var(--text)"} textAnchor="middle" fontFamily="var(--font-mono)">
+          {is2025 ? "2025" : "2026"}
         </text>
 
         {/* Heatmap Card Outline */}
