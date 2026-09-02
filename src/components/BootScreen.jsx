@@ -63,8 +63,19 @@ export default function BootScreen({ onComplete }) {
     setTimeout(() => {
       sessionStorage.setItem('eggieos_booted', 'true');
       onComplete();
-    }, 400);
+    }, 350);
   };
+
+  // Keyboard shortcut listener for Escape, Enter, Space
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+        handleSkip();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <div 
@@ -74,8 +85,13 @@ export default function BootScreen({ onComplete }) {
         pointerEvents: isFading ? 'none' : 'auto'
       }}
     >
-      <button id="boot-skip-btn" className="boot-skip-btn" onClick={handleSkip}>
-        ESC / SKIP INTRO
+      <button 
+        id="boot-skip-btn" 
+        className="boot-skip-btn" 
+        onClick={handleSkip}
+        aria-label="Skip boot sequence intro"
+      >
+        <span>[ SKIP INTRO ↵ ]</span>
       </button>
 
       <div className="boot-content">

@@ -280,14 +280,14 @@ html {
   font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.6;
-  padding: 40px;
+  padding: 40px 40px 100px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  z-index: 999;
+  z-index: 9999;
   box-sizing: border-box;
-  overflow: hidden;
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  overflow-y: auto;
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 .boot-content {
@@ -296,26 +296,58 @@ html {
 }
 
 .boot-line {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .boot-skip-btn {
-  position: absolute;
-  top: 40px;
+  position: fixed;
+  bottom: 36px;
   right: 40px;
-  background: transparent;
+  background: var(--panel);
   color: var(--text);
-  border: 1px solid var(--border);
-  padding: 8px 16px;
+  border: 1px solid var(--border-active);
+  padding: 10px 18px;
   font-family: var(--font-mono);
   font-size: 11px;
+  letter-spacing: 0.06em;
   cursor: pointer;
-  transition: background 0.2s ease;
+  z-index: 10000;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
 .boot-skip-btn:hover {
-  background: var(--accent-hover);
+  background: var(--text);
+  color: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.boot-skip-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .boot-screen {
+    padding: 24px 20px 100px;
+    font-size: 12px;
+  }
+
+  .boot-skip-btn {
+    bottom: 24px;
+    right: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    padding: 12px 18px;
+    font-size: 12px;
+  }
 }
 
 @keyframes caffeine-flash {
