@@ -175,8 +175,10 @@ export default function App() {
           id="theme-toggle-btn"
           className="mono"
           onClick={() => setIsLightTheme(!isLightTheme)}
+          aria-label="Toggle dark/light theme"
         >
-          MODE: {isLightTheme ? 'LIGHT' : 'DARK'}
+          <span className="theme-toggle-dot"></span>
+          <span>MODE: {isLightTheme ? 'LIGHT' : 'DARK'}</span>
         </button>
       )}
 
