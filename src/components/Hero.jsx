@@ -13,7 +13,7 @@ const BUILDING_PROJECTS = [
   "This very website"
 ];
 
-export default function Hero({ isLightTheme, onToggleTheme }) {
+export default function Hero({ isLightTheme }) {
   // Typewriter State
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [typedText, setTypedText] = useState("");
@@ -133,8 +133,8 @@ export default function Hero({ isLightTheme, onToggleTheme }) {
 
   return (
     <div className="slide-inner" style={{ position: 'relative' }}>
-      {/* Interactive Cybertronian Transformer Background Layer */}
-      <AutobotTraffic isLightTheme={isLightTheme} onToggleTheme={onToggleTheme} />
+      {/* Ambient Sci-Fi Vehicle Background Layer */}
+      <AutobotTraffic />
 
       <div className="slide-header-brand">eggie.dev / v1.0</div>
 
