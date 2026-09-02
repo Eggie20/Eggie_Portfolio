@@ -1,0 +1,109 @@
+/* ========================================= */
+/* SLIDE 03: ABOUT                           */
+/* ========================================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  height: 100%;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-divider {
+  background-color: var(--border);
+  height: 80%;
+  width: 100%;
+}
+
+.about-left,
+.about-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.about-left {
+  padding-right: 20px;
+}
+
+.about-right {
+  padding-left: 20px;
+  font-family: var(--font-mono);
+}
+
+.about-paragraph {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.about-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.stat-pill {
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  background: transparent;
+}
+
+/* System monitor layout */
+.monitor-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+
+.monitor-divider {
+  border-bottom: 1px dashed var(--border);
+  margin: 12px 0;
+}
+
+.monitor-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 2.2;
+}
+
+.monitor-label {
+  opacity: 0.6;
+}
+
+.monitor-value {
+  text-align: right;
+}
+
+.monitor-warning-icon {
+  display: inline-block;
+  margin-left: 6px;
+  animation: caffeine-flash 0.8s infinite;
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    height: auto;
+  }
+
+  .about-divider {
+    display: none;
+  }
+
+  .about-left,
+  .about-right {
+    padding: 0;
+    height: auto;
+  }
+}

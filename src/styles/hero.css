@@ -1,0 +1,120 @@
+/* ========================================= */
+/* SLIDE 02: HERO                            */
+/* ========================================= */
+.hero-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.hero-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin: auto 0;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-name {
+  font-family: var(--font-mono);
+  font-size: clamp(3rem, 7vw, 7.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.hero-typewriter {
+  font-size: clamp(1.2rem, 3vw, 2.2rem);
+  font-weight: 300;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.hero-location {
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+  opacity: 0.6;
+}
+
+.hero-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.hero-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-footer-col.right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.open-to-work {
+  position: absolute;
+  bottom: 40px;
+  right: 10%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.blinking-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--text);
+  box-shadow: 0 0 4px var(--text);
+  animation: blink-cursor 1s step-end infinite;
+}
+
+@media (max-width: 1024px) {
+  .hero-main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .hero-text {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-bottom: 20px;
+  }
+
+  .hero-footer-col.right {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .open-to-work {
+    position: static;
+    margin-top: 20px;
+  }
+}

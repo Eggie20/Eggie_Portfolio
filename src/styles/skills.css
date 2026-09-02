@@ -1,0 +1,129 @@
+/* ========================================= */
+/* SLIDE 05: SKILLS                          */
+/* ========================================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  height: 100%;
+  align-items: center;
+}
+
+.skills-left {
+  font-family: var(--font-mono);
+}
+
+.skills-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+.skills-span-2 {
+  grid-column: span 2;
+}
+
+.skills-knowledge-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.skills-knowledge-item {
+  font-family: var(--font-mono);
+}
+
+.skills-learning-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.skills-learning-item {
+  font-family: var(--font-mono);
+}
+
+.skills-right-col {
+  border: 1px dashed var(--border);
+  padding: 24px;
+}
+
+.skills-right-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  opacity: 0.8;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.skills-right-list {
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 2;
+}
+
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.skills-table th,
+.skills-table td {
+  text-align: left;
+  padding: 8px 12px;
+}
+
+.skills-table th {
+  border-bottom: 1px solid var(--border);
+  font-weight: bold;
+  opacity: 0.6;
+}
+
+.skills-table tr:not(:last-child) td {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.03);
+}
+
+.status-running {
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.status-not-found {
+  font-weight: bold;
+  color: var(--text);
+  animation: caffeine-flash 1s infinite;
+}
+
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    height: auto;
+  }
+
+  .skills-right {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+
+  .skills-span-2 {
+    grid-column: span 1;
+  }
+
+  .skills-knowledge-grid,
+  .skills-learning-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .skills-table th,
+  .skills-table td {
+    padding: 6px 4px;
+  }
+}

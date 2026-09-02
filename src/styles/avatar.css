@@ -1,0 +1,176 @@
+/* ========================================= */
+/* THEME TOGGLE & PHOTOGRAPHIC AVATAR        */
+/* ========================================= */
+
+/* Theme Toggle Button Styling */
+#theme-toggle-btn {
+  position: fixed;
+  top: 40px;
+  right: 10%;
+  margin-right: 60px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  z-index: 1000;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+#theme-toggle-btn:hover {
+  border-color: var(--border-active);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+#theme-toggle-btn:active {
+  transform: translateY(1px);
+}
+
+.theme-toggle-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  animation: theme-led-pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes theme-led-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.light-theme #theme-toggle-btn {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.light-theme #theme-toggle-btn:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 1024px) {
+  #theme-toggle-btn {
+    right: 24px !important;
+    left: auto !important;
+    top: 24px !important;
+    bottom: auto !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* Photographic Avatar Styles */
+.avatar-frame {
+  width: 140px;
+  height: 140px;
+  border: 2px solid var(--text);
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 0px var(--text);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-frame:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--text);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: avatar-fade 0.25s ease-out;
+}
+
+@keyframes avatar-fade {
+  from {
+    opacity: 0.8;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Floating Particles for Photographic Avatar */
+.floating-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floating-particle {
+  position: absolute;
+  font-family: var(--font-mono);
+  color: var(--text);
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Specific Particle Spacing & Timings */
+.part-z1 {
+  left: 80%;
+  top: 15%;
+  font-size: 11px;
+  animation: floatUpParticle 3s infinite linear;
+}
+
+.part-z2 {
+  left: 88%;
+  top: 5%;
+  font-size: 15px;
+  animation: floatUpParticle 3.5s infinite linear 1s;
+}
+
+.part-code1 {
+  left: 80%;
+  top: 15%;
+  font-size: 10px;
+  animation: floatUpParticle 2.5s infinite linear;
+}
+
+.part-code2 {
+  left: 12%;
+  top: 10%;
+  font-size: 10px;
+  animation: floatUpParticle 3s infinite linear 1.2s;
+}
+
+@keyframes floatUpParticle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-30px) scale(1.4);
+    opacity: 0;
+  }
+}
