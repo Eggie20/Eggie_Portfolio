@@ -266,19 +266,114 @@ const renderFallbackSVG = (num, imgIdx, totalCount = 4) => {
     );
   }
 
-  // GitHub SVGs
+  // GitHub Contributions Heatmap SVG
   if (num === "06") {
+    // Activity map matching the user's GitHub contribution history
+    const activityMap = {
+      4: { 1: '#9be9a8' },
+      8: { 4: '#40c463' },
+      9: { 6: '#9be9a8' },
+      11: { 4: '#30a14e', 5: '#9be9a8' },
+      12: { 2: '#9be9a8' },
+      15: { 3: '#216e39' },
+      16: { 1: '#30a14e' },
+      17: { 6: '#9be9a8' },
+      18: { 0: '#9be9a8' },
+      20: { 3: '#9be9a8', 4: '#9be9a8' },
+      21: { 3: '#9be9a8', 4: '#9be9a8' },
+      22: { 4: '#40c463' },
+      28: { 3: '#9be9a8' },
+      29: { 0: '#9be9a8', 3: '#216e39' },
+      30: { 6: '#9be9a8' },
+      33: { 2: '#9be9a8' },
+      34: { 2: '#9be9a8' },
+      35: { 0: '#9be9a8' },
+      36: { 1: '#9be9a8', 2: '#9be9a8', 3: '#9be9a8' }
+    };
+
+    const cols = 37;
+    const rows = 7;
+    const squareSize = 4.3;
+    const gap = 1.6;
+    const startX = 26;
+    const startY = 32;
+
+    const months = [
+      { label: 'Sep', x: 26 },
+      { label: 'Oct', x: 48 },
+      { label: 'Nov', x: 72 },
+      { label: 'Dec', x: 96 },
+      { label: 'Jan', x: 120 },
+      { label: 'Feb', x: 144 },
+      { label: 'Mar', x: 168 },
+      { label: 'Apr', x: 192 },
+      { label: 'May', x: 216 },
+      { label: 'Jun', x: 240 },
+      { label: 'Jul', x: 262 },
+      { label: 'Aug', x: 284 }
+    ];
+
     return (
-      <svg viewBox="0 0 100 60" style={{ width: '100%', height: '100%', stroke: strokeColor, strokeWidth: '0.6', fill: 'none', opacity: 0.6 }}>
-        <line x1="25" y1="12" x2="25" y2="48" />
-        <circle cx="25" cy="18" r="3" style={{ fill: 'var(--bg)' }} />
-        <circle cx="25" cy="32" r="3" style={{ fill: 'var(--bg)' }} />
-        <circle cx="25" cy="46" r="3" style={{ fill: 'var(--bg)' }} />
-        <path d="M 25 18 Q 60 22 60 34 L 60 44" />
-        <circle cx="60" cy="44" r="3" style={{ fill: 'var(--bg)' }} />
-        <text x="32" y="20" fontSize="4.5" fontFamily="var(--font-mono)" style={{ stroke: 'none', fill: 'var(--text)' }}>main</text>
-        <text x="68" y="46" fontSize="4.5" fontFamily="var(--font-mono)" style={{ stroke: 'none', fill: 'var(--text)' }}>feat/main</text>
-        <text x="50" y="56" fontSize="4" fontFamily="var(--font-mono)" textAnchor="middle" style={{ stroke: 'none', fill: 'var(--text)' }}>[{viewStr}]</text>
+      <svg viewBox="0 0 310 115" style={{ width: '100%', height: '100%', display: 'block', padding: '4px' }}>
+        {/* Title */}
+        <text x="10" y="14" fontSize="7" fontWeight="600" fill="var(--text)" fontFamily="var(--font-mono)">
+          107 contributions in the last year
+        </text>
+
+        {/* Heatmap Card Outline */}
+        <rect x="8" y="20" width="294" height="88" rx="4" fill="rgba(255,255,255,0.015)" stroke="var(--border)" strokeWidth="0.8" />
+
+        {/* Month Labels */}
+        {months.map((m, i) => (
+          <text key={i} x={m.x} y="28" fontSize="4.5" fill="var(--muted)" fontFamily="var(--font-mono)">
+            {m.label}
+          </text>
+        ))}
+
+        {/* Day of Week Labels */}
+        <text x="13" y="43" fontSize="4.2" fill="var(--muted)" fontFamily="var(--font-mono)">Mon</text>
+        <text x="13" y="55" fontSize="4.2" fill="var(--muted)" fontFamily="var(--font-mono)">Wed</text>
+        <text x="13" y="67" fontSize="4.2" fill="var(--muted)" fontFamily="var(--font-mono)">Fri</text>
+
+        {/* 37 x 7 Contribution Squares */}
+        {Array.from({ length: cols }).map((_, c) =>
+          Array.from({ length: rows }).map((_, r) => {
+            const activeColor = activityMap[c] && activityMap[c][r];
+            const fillColor = activeColor || 'rgba(255, 255, 255, 0.04)';
+            const strokeColor = activeColor ? 'transparent' : 'var(--border)';
+
+            return (
+              <rect
+                key={`${c}-${r}`}
+                x={startX + c * (squareSize + gap)}
+                y={startY + r * (squareSize + gap)}
+                width={squareSize}
+                height={squareSize}
+                rx="1"
+                fill={fillColor}
+                stroke={strokeColor}
+                strokeWidth="0.5"
+              />
+            );
+          })
+        )}
+
+        {/* Footer info & Legend */}
+        <text x="14" y="99" fontSize="3.8" fill="var(--muted)" fontFamily="var(--font-mono)">
+          Learn how we count contributions
+        </text>
+
+        <text x="226" y="99" fontSize="3.8" fill="var(--muted)" fontFamily="var(--font-mono)">
+          Less
+        </text>
+        <rect x="238" y="95" width="4" height="4" rx="1" fill="rgba(255, 255, 255, 0.06)" stroke="var(--border)" strokeWidth="0.4" />
+        <rect x="244" y="95" width="4" height="4" rx="1" fill="#9be9a8" />
+        <rect x="250" y="95" width="4" height="4" rx="1" fill="#40c463" />
+        <rect x="256" y="95" width="4" height="4" rx="1" fill="#30a14e" />
+        <rect x="262" y="95" width="4" height="4" rx="1" fill="#216e39" />
+        <text x="270" y="99" fontSize="3.8" fill="var(--muted)" fontFamily="var(--font-mono)">
+          More
+        </text>
       </svg>
     );
   }
