@@ -190,7 +190,10 @@ export default function App() {
             style={{ transform: `translateY(-${currentSlide * 100}vh)` }}
           >
             <section className="slide" id="slide-hero">
-              <Hero isLightTheme={isLightTheme} />
+              <Hero 
+                isLightTheme={isLightTheme} 
+                onToggleTheme={() => setIsLightTheme((prev) => !prev)} 
+              />
             </section>
 
             <section className="slide" id="slide-about">

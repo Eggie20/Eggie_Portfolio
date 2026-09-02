@@ -4,10 +4,9 @@
 .hero-layout {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   height: 100%;
-  padding: 10px 0;
 }
 
 .hero-main {
@@ -16,7 +15,7 @@
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 32px;
   margin: auto 0;
 }
 
@@ -24,33 +23,33 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 100%;
 }
 
 .hero-name {
   font-family: var(--font-mono);
-  font-size: clamp(3.2rem, 7.5vw, 7.5rem);
+  font-size: clamp(3.8rem, 9.5vw, 9rem);
   font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 22px;
   text-transform: uppercase;
   word-break: break-word;
 }
 
 .hero-typewriter {
-  font-size: clamp(1.35rem, 3.2vw, 2.4rem);
-  font-weight: 400;
-  min-height: 44px;
+  font-size: clamp(1.15rem, 2.8vw, 2.2rem);
+  font-weight: 300;
+  min-height: 38px;
   height: auto;
   line-height: 1.35;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .hero-location {
-  font-size: clamp(1rem, 2vw, 1.3rem);
-  opacity: 0.7;
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+  opacity: 0.65;
   line-height: 1.4;
+  margin-bottom: 8px;
 }
 
 .hero-footer-grid {
@@ -60,13 +59,13 @@
   border-top: 1px solid var(--border);
   padding-top: 24px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .hero-footer-col {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .hero-footer-col.right {
@@ -82,16 +81,15 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
 }
 
 .blinking-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: var(--text);
-  box-shadow: 0 0 6px var(--text);
+  box-shadow: 0 0 4px var(--text);
   animation: blink-cursor 1s step-end infinite;
 }
 
@@ -101,8 +99,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 28px;
-    margin: 20px 0;
+    gap: 20px;
   }
 
   .hero-text {
@@ -112,19 +109,20 @@
   }
 
   .hero-name {
-    font-size: clamp(2.8rem, 10vw, 5.2rem);
-    margin-bottom: 16px;
-    line-height: 1.1;
+    font-size: clamp(3rem, 11vw, 5.8rem);
+    margin-bottom: 18px;
+    line-height: 1.05;
   }
 
   .hero-typewriter {
-    font-size: clamp(1.3rem, 5vw, 2rem);
-    min-height: 52px;
-    margin-bottom: 12px;
+    font-size: clamp(1.05rem, 4vw, 1.5rem);
+    min-height: 48px;
+    margin-bottom: 10px;
   }
 
   .hero-location {
-    font-size: clamp(1rem, 3.8vw, 1.25rem);
+    font-size: clamp(0.88rem, 3.2vw, 1.1rem);
+    margin-bottom: 16px;
   }
 
   .hero-footer-grid {
@@ -140,6 +138,6 @@
 
   .open-to-work {
     position: static;
-    margin-top: 24px;
+    margin-top: 20px;
   }
 }

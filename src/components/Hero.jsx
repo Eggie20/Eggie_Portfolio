@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Avatar from './Avatar';
+import AutobotTraffic from './AutobotTraffic';
 
 const TYPEWRITER_PHRASES = [
   "Full-Stack Developer",
@@ -12,7 +13,7 @@ const BUILDING_PROJECTS = [
   "This very website"
 ];
 
-export default function Hero({ isLightTheme }) {
+export default function Hero({ isLightTheme, onToggleTheme }) {
   // Typewriter State
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [typedText, setTypedText] = useState("");
@@ -104,7 +105,7 @@ export default function Hero({ isLightTheme }) {
   useEffect(() => {
     const triggerGlitch = () => {
       setIsGlitching(true);
-      
+
       // Keep it glitched for a tiny frame (120ms)
       setTimeout(() => {
         setIsGlitching(false);
@@ -131,10 +132,13 @@ export default function Hero({ isLightTheme }) {
   };
 
   return (
-    <div className="slide-inner">
+    <div className="slide-inner" style={{ position: 'relative' }}>
+      {/* Interactive Cybertronian Transformer Background Layer */}
+      <AutobotTraffic isLightTheme={isLightTheme} onToggleTheme={onToggleTheme} />
+
       <div className="slide-header-brand">eggie.dev / v1.0</div>
-      
-      <div className="hero-layout">
+
+      <div className="hero-layout" style={{ position: 'relative', zIndex: 2 }}>
         <div className="hero-main">
           <div className="hero-text">
             <h1 className="hero-name">Arnel Mandas</h1>

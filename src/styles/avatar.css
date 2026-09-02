@@ -47,8 +47,17 @@
 }
 
 @keyframes theme-led-pulse {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.15); }
+
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
 }
 
 .light-theme #theme-toggle-btn {
@@ -71,24 +80,24 @@
 
 /* Photographic Avatar Styles */
 .avatar-frame {
-  width: clamp(160px, 25vw, 210px);
-  height: clamp(160px, 25vw, 210px);
-  border: 3px solid var(--text);
+  width: 140px;
+  height: 140px;
+  border: 2px solid var(--text);
   border-radius: 50%;
   overflow: hidden;
   background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 6px 6px 0px var(--text);
+  box-shadow: 4px 4px 0px var(--text);
   transition: all 0.3s ease;
   position: relative;
   z-index: 10;
 }
 
 .avatar-frame:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0px var(--text);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--text);
 }
 
 .avatar-img {
@@ -103,6 +112,7 @@
     opacity: 0.8;
     transform: scale(0.96);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -163,12 +173,15 @@
     transform: translateY(0) scale(1);
     opacity: 0;
   }
+
   20% {
     opacity: 0.8;
   }
+
   80% {
     opacity: 0.4;
   }
+
   100% {
     transform: translateY(-30px) scale(1.4);
     opacity: 0;

@@ -1,0 +1,386 @@
+/* ==========================================================================
+   Autobot Traffic — Interactive Cybertronian Transformer System
+   ========================================================================== */
+
+:root {
+  --autobot-primary: #f0f3f7;
+  --autobot-secondary: #1a1f29;
+  --autobot-accent: #7fd9c4;
+  --autobot-glow: rgba(127, 217, 196, 0.45);
+  --autobot-trail: rgba(127, 217, 196, 0.2);
+  --autobot-amber: #e8b04b;
+  --autobot-beam: linear-gradient(90deg, rgba(127, 217, 196, 0.4), transparent);
+}
+
+.light-theme {
+  --autobot-primary: #111827;
+  --autobot-secondary: #ffffff;
+  --autobot-accent: #0f8a70;
+  --autobot-glow: rgba(15, 138, 112, 0.35);
+  --autobot-trail: rgba(15, 138, 112, 0.15);
+  --autobot-amber: #d97706;
+  --autobot-beam: linear-gradient(90deg, rgba(15, 138, 112, 0.3), transparent);
+}
+
+/* Ambient Hero Container */
+.autobot-traffic-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+  user-select: none;
+}
+
+/* Individual Traffic Lanes */
+.autobot-lane {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  pointer-events: none;
+}
+
+.autobot-lane-top {
+  top: 16%;
+}
+
+.autobot-lane-bottom {
+  bottom: 120px;
+}
+
+/* Subtle Cyber Highway Laser Guide Lines */
+.autobot-laser-road {
+  position: absolute;
+  bottom: 124px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 5%, var(--line) 20%, var(--line) 80%, transparent 95%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Interactive Vehicle Wrapper */
+.autobot-vehicle-wrapper {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  pointer-events: auto; /* Clickable */
+  cursor: pointer;
+  will-change: transform;
+  transition: filter 0.2s ease;
+}
+
+.autobot-vehicle-wrapper:hover {
+  filter: drop-shadow(0 0 10px var(--autobot-accent));
+}
+
+/* Left-to-Right Drive Animation with Suspension Bob */
+.autobot-drive-ltr {
+  animation: autobot-drive-ltr var(--drive-speed, 11s) linear infinite;
+  animation-delay: var(--drive-delay, 0s);
+  transform: translateX(-240px);
+}
+
+/* Right-to-Left Drive Animation with Suspension Bob */
+.autobot-drive-rtl {
+  animation: autobot-drive-rtl var(--drive-speed, 14s) linear infinite;
+  animation-delay: var(--drive-delay, 4s);
+  transform: translateX(calc(100vw + 240px)) scaleX(-1);
+}
+
+/* When Transforming, pause on screen and shake */
+.autobot-vehicle-wrapper.transforming {
+  animation-play-state: paused !important;
+  animation: vehicle-transform-burst 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+@keyframes vehicle-transform-burst {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px var(--autobot-accent));
+  }
+  25% {
+    transform: scale(1.18) rotate(3deg) translateY(-8px);
+    filter: drop-shadow(0 0 24px var(--autobot-amber)) brightness(1.3);
+  }
+  50% {
+    transform: scale(1.22) rotate(-3deg) translateY(-10px);
+    filter: drop-shadow(0 0 32px var(--autobot-accent)) brightness(1.5);
+  }
+  75% {
+    transform: scale(1.12) rotate(1deg) translateY(-4px);
+    filter: drop-shadow(0 0 20px var(--autobot-accent));
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35));
+  }
+}
+
+@keyframes autobot-drive-ltr {
+  0% {
+    transform: translateX(-240px) translateY(0);
+    opacity: 0;
+  }
+  3% {
+    opacity: var(--vehicle-opacity, 0.65);
+  }
+  25% {
+    transform: translateX(25vw) translateY(-2px);
+  }
+  50% {
+    transform: translateX(55vw) translateY(1.5px);
+  }
+  75% {
+    transform: translateX(80vw) translateY(-1.5px);
+  }
+  97% {
+    opacity: var(--vehicle-opacity, 0.65);
+  }
+  100% {
+    transform: translateX(calc(100vw + 240px)) translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes autobot-drive-rtl {
+  0% {
+    transform: translateX(calc(100vw + 240px)) scaleX(-1) translateY(0);
+    opacity: 0;
+  }
+  3% {
+    opacity: var(--vehicle-opacity, 0.5);
+  }
+  25% {
+    transform: translateX(75vw) scaleX(-1) translateY(-2px);
+  }
+  50% {
+    transform: translateX(45vw) scaleX(-1) translateY(1.5px);
+  }
+  75% {
+    transform: translateX(20vw) scaleX(-1) translateY(-1.5px);
+  }
+  97% {
+    opacity: var(--vehicle-opacity, 0.5);
+  }
+  100% {
+    transform: translateX(-240px) scaleX(-1) translateY(0);
+    opacity: 0;
+  }
+}
+
+/* Vehicle SVG Silhouette High-DPI Styling */
+.autobot-svg {
+  width: 180px;
+  height: 72px;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.35));
+  transition: all 0.25s ease;
+  overflow: visible;
+}
+
+/* Hover Interactive Reticle Tooltip */
+.autobot-transform-hint {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--panel);
+  color: var(--autobot-accent);
+  border: 1px solid var(--autobot-accent);
+  padding: 3px 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  border-radius: 2px;
+  box-shadow: 0 0 12px var(--autobot-glow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.autobot-vehicle-wrapper:hover .autobot-transform-hint {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-3px);
+}
+
+/* Forward Laser Headlight Projection */
+.autobot-headlight-beam {
+  position: absolute;
+  left: 175px;
+  top: 36px;
+  width: 120px;
+  height: 28px;
+  background: var(--autobot-beam);
+  clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 65%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Rear Energon Plasma Speed Trail */
+.autobot-speed-trail {
+  position: absolute;
+  right: 155px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 20px;
+  background: linear-gradient(90deg, transparent, var(--autobot-trail));
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Rotating Wheel Spoke Dynamos */
+.autobot-wheel-rim {
+  transform-origin: center;
+  animation: autobot-wheel-spin 0.4s linear infinite;
+}
+
+@keyframes autobot-wheel-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   Radial Energon Shockwave FX
+   ========================================================================== */
+.cyber-shockwave-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.cyber-shockwave-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--autobot-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 40px var(--autobot-accent), inset 0 0 30px var(--autobot-accent);
+  animation: cyber-shockwave-expand 0.75s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes cyber-shockwave-expand {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+    border-width: 6px;
+  }
+  70% {
+    opacity: 0.8;
+  }
+  100% {
+    width: 280vmax;
+    height: 280vmax;
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+/* Tactical HUD Toast Banner */
+.cyber-hud-toast {
+  position: fixed;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--panel);
+  color: var(--autobot-accent);
+  border: 1px solid var(--autobot-accent);
+  padding: 8px 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  z-index: 10001;
+  box-shadow: 0 0 20px var(--autobot-glow);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: cyber-hud-toast-anim 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes cyber-hud-toast-anim {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -15px) scale(0.95);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -10px) scale(0.98);
+  }
+}
+
+/* Reduced Motion Fallback */
+@media (prefers-reduced-motion: reduce) {
+  .autobot-drive-ltr,
+  .autobot-drive-rtl,
+  .cyber-shockwave-ring {
+    animation: none !important;
+  }
+  .autobot-wheel-rim {
+    animation: none !important;
+  }
+}
+
+/* Mobile & Tablet Optimizations */
+@media (max-width: 1024px) {
+  .autobot-lane-top {
+    display: none; /* Keep hero clean on mobile */
+  }
+
+  .autobot-lane-bottom {
+    bottom: 85px;
+  }
+
+  .autobot-laser-road {
+    bottom: 89px;
+  }
+
+  .autobot-svg {
+    width: 145px;
+    height: 58px;
+  }
+
+  .autobot-transform-hint {
+    font-size: 8px;
+    top: -24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .autobot-svg {
+    width: 125px;
+    height: 50px;
+  }
+
+  .autobot-headlight-beam {
+    width: 70px;
+    left: 120px;
+  }
+}
