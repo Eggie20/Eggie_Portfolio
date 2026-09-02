@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Avatar from './Avatar';
-import AutobotTraffic from './AutobotTraffic';
 
 const TYPEWRITER_PHRASES = [
   "Full-Stack Developer",
@@ -132,13 +131,10 @@ export default function Hero({ isLightTheme }) {
   };
 
   return (
-    <div className="slide-inner" style={{ position: 'relative' }}>
-      {/* Interactive Sci-Fi Vehicle Background — Click to activate Cybertron Mode */}
-      <AutobotTraffic />
-
+    <div className="slide-inner">
       <div className="slide-header-brand">eggie.dev / v1.0</div>
 
-      <div className="hero-layout" style={{ position: 'relative', zIndex: 2 }}>
+      <div className="hero-layout">
         <div className="hero-main">
           <div className="hero-text">
             <h1 className="hero-name">Arnel Mandas</h1>

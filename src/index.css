@@ -28,9 +28,3 @@
 
 /* 9. Interactive Gallery & Repository Modal Inspector */
 @import './styles/modal.css';
-
-/* 10. Interactive Transformer Autobot Traffic System */
-@import './styles/traffic.css';
-
-/* 11. Cybertron Mode — Futuristic Transformer Theme (LAST = highest priority) */
-@import './styles/cybertron.css';
