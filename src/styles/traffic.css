@@ -1,43 +1,19 @@
 /* ==========================================================================
-   Autobot Traffic — Ambient Sci-Fi Vehicle Background Layer
+   Autobot Traffic — Interactive Sci-Fi Vehicle Background Layer
    --------------------------------------------------------------------------
-   REDUCED MOTION: All driving & wheel animations are disabled when
-   `prefers-reduced-motion: reduce` — vehicles simply don't render.
-
-   TUNING: Speed, delay, and opacity are driven via CSS custom properties
-   set inline on each .autobot-vehicle-wrapper (see AutobotTraffic.jsx CONFIG).
-   Lane vertical positions are set on .autobot-lane-top / .autobot-lane-bottom.
+   KEY FIX: Vehicles animate within 0vw–100vw (NOT negative offscreen)
+   because .slide has overflow:hidden which clips anything outside bounds.
+   Vehicles fade in/out at edges instead of sliding from offscreen.
    ========================================================================== */
-
-/* ─── Theme Color Tokens ─────────────────────────────────────────────── */
-:root {
-  --autobot-primary: #1a1f29;
-  --autobot-stroke: #f0f3f7;
-  --autobot-canopy: #12151c;
-  --autobot-accent: #7fd9c4;
-  --autobot-amber: #e8b04b;
-  --autobot-wheel: #12151c;
-  --autobot-trail: rgba(127, 217, 196, 0.18);
-}
-
-.light-theme {
-  --autobot-primary: #ffffff;
-  --autobot-stroke: #111827;
-  --autobot-canopy: #e5e7eb;
-  --autobot-accent: #0f8a70;
-  --autobot-amber: #d97706;
-  --autobot-wheel: #f8f9fa;
-  --autobot-trail: rgba(15, 138, 112, 0.12);
-}
 
 /* ─── Container ──────────────────────────────────────────────────────── */
 .autobot-traffic-container {
   position: absolute;
   inset: 0;
-  pointer-events: none;
   overflow: hidden;
   z-index: 1;
   user-select: none;
+  pointer-events: none;
 }
 
 /* ─── Lanes ──────────────────────────────────────────────────────────── */
@@ -49,11 +25,11 @@
 }
 
 .autobot-lane-top {
-  top: 14%;
+  top: 12%;
 }
 
 .autobot-lane-bottom {
-  bottom: 110px;
+  bottom: 100px;
 }
 
 /* ─── Vehicle Wrapper ────────────────────────────────────────────────── */
@@ -61,67 +37,105 @@
   position: absolute;
   display: inline-flex;
   align-items: center;
+  pointer-events: auto;
+  cursor: pointer;
+  will-change: transform, opacity;
+  transition: filter 0.25s ease;
+}
+
+.autobot-vehicle-wrapper:hover {
+  filter: drop-shadow(0 0 16px rgba(34, 211, 238, 0.6)) brightness(1.15);
+}
+
+.autobot-vehicle-wrapper:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ─── Click Hint Tooltip ─────────────────────────────────────────────── */
+.autobot-click-hint {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(15, 23, 42, 0.9);
+  color: #22d3ee;
+  border: 1px solid #22d3ee;
+  padding: 3px 10px;
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  border-radius: 3px;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.3);
+  opacity: 0;
   pointer-events: none;
-  will-change: transform;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
 }
 
-/* ─── LTR Drive (left → right with subtle vertical bob) ──────────────── */
+.autobot-vehicle-wrapper:hover .autobot-click-hint {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ─── LTR Drive Animation ───────────────────────────────────────────── */
+/* Stays within 0%–100% of container width, fades at edges */
 .autobot-drive-ltr {
-  animation: autobot-drive-ltr var(--drive-speed, 11s) linear var(--drive-delay, 0s) infinite;
-  transform: translateX(-240px);
+  animation: drive-ltr var(--drive-speed, 12s) linear var(--drive-delay, 0s) infinite;
 }
 
-/* ─── RTL Drive (right → left, mirrored with vertical bob) ───────────── */
-.autobot-drive-rtl {
-  animation: autobot-drive-rtl var(--drive-speed, 14s) linear var(--drive-delay, 5s) infinite;
-  transform: translateX(calc(100vw + 240px)) scaleX(-1);
-}
-
-@keyframes autobot-drive-ltr {
+@keyframes drive-ltr {
   0% {
-    transform: translateX(-240px) translateY(0);
+    transform: translateX(-15%) translateY(0);
     opacity: 0;
   }
-  3% {
-    opacity: var(--vehicle-opacity, 0.55);
+  5% {
+    opacity: var(--vehicle-opacity, 0.7);
   }
   12% {
-    transform: translateX(10vw) translateY(-1.5px);
+    transform: translateX(8vw) translateY(-1.5px);
   }
   25% {
-    transform: translateX(25vw) translateY(1px);
+    transform: translateX(22vw) translateY(1px);
   }
   37% {
-    transform: translateX(38vw) translateY(-2px);
+    transform: translateX(36vw) translateY(-2px);
   }
   50% {
-    transform: translateX(52vw) translateY(1.5px);
+    transform: translateX(50vw) translateY(1.5px);
   }
   62% {
-    transform: translateX(64vw) translateY(-1px);
+    transform: translateX(62vw) translateY(-1px);
   }
   75% {
-    transform: translateX(78vw) translateY(1.5px);
+    transform: translateX(76vw) translateY(1.5px);
   }
   87% {
-    transform: translateX(90vw) translateY(-1px);
+    transform: translateX(88vw) translateY(-1px);
   }
-  97% {
-    opacity: var(--vehicle-opacity, 0.55);
+  95% {
+    opacity: var(--vehicle-opacity, 0.7);
   }
   100% {
-    transform: translateX(calc(100vw + 240px)) translateY(0);
+    transform: translateX(100%) translateY(0);
     opacity: 0;
   }
 }
 
-@keyframes autobot-drive-rtl {
+/* ─── RTL Drive Animation ───────────────────────────────────────────── */
+.autobot-drive-rtl {
+  animation: drive-rtl var(--drive-speed, 16s) linear var(--drive-delay, 6s) infinite;
+}
+
+@keyframes drive-rtl {
   0% {
-    transform: translateX(calc(100vw + 240px)) scaleX(-1) translateY(0);
+    transform: translateX(100%) scaleX(-1) translateY(0);
     opacity: 0;
   }
-  3% {
-    opacity: var(--vehicle-opacity, 0.4);
+  5% {
+    opacity: var(--vehicle-opacity, 0.5);
   }
   12% {
     transform: translateX(88vw) scaleX(-1) translateY(-1.5px);
@@ -133,92 +147,158 @@
     transform: translateX(58vw) scaleX(-1) translateY(-2px);
   }
   50% {
-    transform: translateX(45vw) scaleX(-1) translateY(1.5px);
+    transform: translateX(44vw) scaleX(-1) translateY(1.5px);
   }
   62% {
-    transform: translateX(34vw) scaleX(-1) translateY(-1px);
+    transform: translateX(32vw) scaleX(-1) translateY(-1px);
   }
   75% {
-    transform: translateX(22vw) scaleX(-1) translateY(1.5px);
+    transform: translateX(20vw) scaleX(-1) translateY(1.5px);
   }
   87% {
-    transform: translateX(10vw) scaleX(-1) translateY(-1px);
+    transform: translateX(8vw) scaleX(-1) translateY(-1px);
   }
-  97% {
-    opacity: var(--vehicle-opacity, 0.4);
+  95% {
+    opacity: var(--vehicle-opacity, 0.5);
   }
   100% {
-    transform: translateX(-240px) scaleX(-1) translateY(0);
+    transform: translateX(-15%) scaleX(-1) translateY(0);
     opacity: 0;
   }
 }
 
-/* ─── SVG Silhouette Sizing ──────────────────────────────────────────── */
+/* ─── SVG Sizing ─────────────────────────────────────────────────────── */
 .autobot-svg {
-  width: 180px;
-  height: 72px;
-  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.25));
+  width: 160px;
+  height: 64px;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
   overflow: visible;
 }
 
-/* ─── Subtle Speed Trail (low-opacity blurred ellipse) ───────────────── */
-.autobot-speed-trail {
-  position: absolute;
-  right: 155px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 80px;
-  height: 18px;
-  background: linear-gradient(90deg, transparent, var(--autobot-trail));
-  border-radius: 50%;
-  filter: blur(4px);
-  pointer-events: none;
-}
-
-/* ─── Rotating Wheel Spokes ──────────────────────────────────────────── */
+/* ─── Wheel Spin ─────────────────────────────────────────────────────── */
 .autobot-wheel-rim {
   transform-origin: center;
-  animation: autobot-wheel-spin 0.45s linear infinite;
+  animation: wheel-spin 0.4s linear infinite;
 }
 
-@keyframes autobot-wheel-spin {
+@keyframes wheel-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 
-/* ─── Reduced Motion ─────────────────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .autobot-traffic-container {
-    display: none;
+/* ─── Transform Burst (on click) ─────────────────────────────────────── */
+.autobot-burst {
+  animation: burst-fx 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+@keyframes burst-fx {
+  0%   { transform: scale(1); filter: brightness(1); }
+  25%  { transform: scale(1.2) rotate(3deg) translateY(-6px); filter: brightness(1.4) drop-shadow(0 0 20px #22d3ee); }
+  50%  { transform: scale(1.25) rotate(-2deg) translateY(-8px); filter: brightness(1.6) drop-shadow(0 0 30px #22d3ee); }
+  75%  { transform: scale(1.1) rotate(1deg) translateY(-3px); filter: brightness(1.2); }
+  100% { transform: scale(1) translateY(0); filter: brightness(1); }
+}
+
+/* ─── Shockwave FX ───────────────────────────────────────────────────── */
+.cyber-shockwave-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.cyber-shockwave-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border: 3px solid #22d3ee;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #22d3ee, inset 0 0 20px rgba(34, 211, 238, 0.3);
+  animation: shockwave 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes shockwave {
+  0% {
+    width: 20px; height: 20px;
+    opacity: 1;
+    border-width: 5px;
+  }
+  60% { opacity: 0.7; }
+  100% {
+    width: 250vmax; height: 250vmax;
+    opacity: 0;
+    border-width: 1px;
   }
 }
 
-/* ─── Responsive: Tablet ─────────────────────────────────────────────── */
+/* ─── Toast ──────────────────────────────────────────────────────────── */
+.cyber-hud-toast {
+  position: fixed;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.92);
+  color: #22d3ee;
+  border: 1px solid #22d3ee;
+  padding: 10px 20px;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  z-index: 10001;
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.4);
+  pointer-events: none;
+  animation: toast-anim 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toast-anim {
+  0%   { opacity: 0; transform: translate(-50%, -12px) scale(0.95); }
+  12%  { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  75%  { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -8px) scale(0.97); }
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .autobot-drive-ltr,
+  .autobot-drive-rtl,
+  .autobot-wheel-rim,
+  .cyber-shockwave-ring,
+  .autobot-burst {
+    animation: none !important;
+  }
+  /* Show vehicles statically parked instead of hidden */
+  .autobot-drive-ltr {
+    transform: translateX(25vw);
+    opacity: 0.5;
+  }
+  .autobot-drive-rtl {
+    transform: translateX(60vw) scaleX(-1);
+    opacity: 0.4;
+  }
+}
+
+/* ─── Tablet ─────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  /* Hide top-lane truck on smaller screens — keep hero clean */
   .autobot-lane-top {
     display: none;
   }
-
   .autobot-lane-bottom {
-    bottom: 80px;
+    bottom: 75px;
   }
-
   .autobot-svg {
-    width: 145px;
-    height: 58px;
+    width: 130px;
+    height: 52px;
   }
 }
 
-/* ─── Responsive: Mobile ─────────────────────────────────────────────── */
+/* ─── Mobile ─────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .autobot-svg {
-    width: 115px;
-    height: 46px;
-  }
-
-  .autobot-speed-trail {
-    width: 50px;
-    right: 100px;
+    width: 100px;
+    height: 40px;
   }
 }

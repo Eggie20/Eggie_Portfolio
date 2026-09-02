@@ -133,7 +133,7 @@ export default function Hero({ isLightTheme }) {
 
   return (
     <div className="slide-inner" style={{ position: 'relative' }}>
-      {/* Ambient Sci-Fi Vehicle Background Layer */}
+      {/* Interactive Sci-Fi Vehicle Background — Click to activate Cybertron Mode */}
       <AutobotTraffic />
 
       <div className="slide-header-brand">eggie.dev / v1.0</div>

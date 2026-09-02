@@ -1,0 +1,562 @@
+/* ==========================================================================
+   CYBERTRON MODE — Futuristic Transformer Theme Override
+   --------------------------------------------------------------------------
+   Activated by toggling .cybertron-mode on <html>.
+   Overrides ALL sections with neon cyan glows, angular metallic panels,
+   hex-grid backgrounds, CRT scan-lines, and energy pulse effects.
+
+   This file is imported LAST in index.css so it wins specificity.
+   ========================================================================== */
+
+/* ─── Core Variable Overrides ────────────────────────────────────────── */
+.cybertron-mode {
+  --bg: #050a12;
+  --panel: #0a1020;
+  --line: rgba(0, 240, 255, 0.1);
+  --text: #e0f4ff;
+  --muted: #5b8a9a;
+  --border: rgba(0, 240, 255, 0.15);
+  --border-active: rgba(0, 240, 255, 0.5);
+  --accent: #00f0ff;
+  --amber: #ff6b2b;
+  --done: #00ff88;
+  --accent-hover: rgba(0, 240, 255, 0.06);
+
+  /* Cybertron-specific tokens */
+  --cyber-neon: #00f0ff;
+  --cyber-neon-dim: rgba(0, 240, 255, 0.35);
+  --cyber-neon-faint: rgba(0, 240, 255, 0.08);
+  --cyber-magenta: #ff2d95;
+  --cyber-grid: rgba(0, 240, 255, 0.04);
+
+  color-scheme: dark;
+}
+
+/* Also override when light-theme is active (Cybertron takes priority) */
+.cybertron-mode.light-theme {
+  --bg: #050a12;
+  --panel: #0a1020;
+  --line: rgba(0, 240, 255, 0.1);
+  --text: #e0f4ff;
+  --muted: #5b8a9a;
+  --border: rgba(0, 240, 255, 0.15);
+  --border-active: rgba(0, 240, 255, 0.5);
+  --accent: #00f0ff;
+  --amber: #ff6b2b;
+  --done: #00ff88;
+  --accent-hover: rgba(0, 240, 255, 0.06);
+  color-scheme: dark;
+}
+
+/* Smooth transition when entering/exiting Cybertron Mode */
+html {
+  transition: background-color 0.6s ease, color 0.5s ease;
+}
+
+/* ─── CRT Scan-Line Overlay (full page) ──────────────────────────────── */
+.cybertron-mode body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 240, 255, 0.02) 2px,
+    rgba(0, 240, 255, 0.02) 4px
+  );
+  opacity: 0.6;
+  animation: cyber-scanline-drift 8s linear infinite;
+}
+
+@keyframes cyber-scanline-drift {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+/* ─── Hex Grid Background Pattern ────────────────────────────────────── */
+.cybertron-mode .slide {
+  background:
+    linear-gradient(135deg, rgba(0, 240, 255, 0.02) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(0, 240, 255, 0.02) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(0, 240, 255, 0.02) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(0, 240, 255, 0.02) 25%, transparent 25%),
+    var(--bg);
+  background-size: 60px 60px;
+  background-position: 0 0, 0 30px, 30px -30px, 30px 0;
+}
+
+/* ─── Scrollbar Override ─────────────────────────────────────────────── */
+.cybertron-mode ::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.25);
+}
+
+.cybertron-mode ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.45);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.cybertron-mode .hero-name {
+  text-shadow:
+    0 0 10px rgba(0, 240, 255, 0.5),
+    0 0 40px rgba(0, 240, 255, 0.2),
+    0 0 80px rgba(0, 240, 255, 0.1);
+  color: #ffffff;
+}
+
+.cybertron-mode .hero-typewriter {
+  color: var(--cyber-neon);
+}
+
+.cybertron-mode .blinking-cursor::after {
+  background-color: var(--cyber-neon);
+  box-shadow: 0 0 8px var(--cyber-neon);
+}
+
+.cybertron-mode .hero-location {
+  border-bottom: 1px solid var(--cyber-neon-dim);
+  padding-bottom: 2px;
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.15);
+}
+
+.cybertron-mode .hero-footer-grid {
+  border-top: 1px solid var(--cyber-neon-dim);
+}
+
+.cybertron-mode .slide-header-brand {
+  color: var(--cyber-neon);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+  opacity: 0.8;
+}
+
+.cybertron-mode .open-to-work {
+  border-color: var(--cyber-neon-dim);
+  box-shadow: 0 0 12px var(--cyber-neon-faint);
+}
+
+.cybertron-mode .blinking-dot {
+  background: var(--cyber-neon) !important;
+  box-shadow: 0 0 6px var(--cyber-neon);
+}
+
+/* ==========================================================================
+   ABOUT SECTION
+   ========================================================================== */
+
+.cybertron-mode .about-divider {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--cyber-neon-dim) 20%,
+    var(--cyber-neon) 50%,
+    var(--cyber-neon-dim) 80%,
+    transparent
+  );
+  width: 2px;
+  box-shadow: 0 0 10px var(--cyber-neon-dim);
+}
+
+.cybertron-mode .stat-pill {
+  border-color: var(--cyber-neon-dim);
+  box-shadow: 0 0 6px var(--cyber-neon-faint), inset 0 0 6px var(--cyber-neon-faint);
+  color: var(--cyber-neon);
+  background: rgba(0, 240, 255, 0.03);
+  transition: all 0.25s ease;
+}
+
+.cybertron-mode .stat-pill:hover {
+  border-color: var(--cyber-neon);
+  box-shadow: 0 0 12px var(--cyber-neon-dim);
+}
+
+.cybertron-mode .monitor-title {
+  color: var(--cyber-neon);
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.2);
+  letter-spacing: 0.1em;
+}
+
+.cybertron-mode .monitor-divider {
+  border-bottom-color: var(--cyber-neon-dim);
+  border-bottom-style: solid;
+}
+
+.cybertron-mode .monitor-value {
+  color: var(--cyber-neon);
+  text-shadow: 0 0 4px rgba(0, 240, 255, 0.15);
+}
+
+.cybertron-mode .monitor-warning-icon {
+  color: var(--cyber-magenta);
+  text-shadow: 0 0 6px rgba(255, 45, 149, 0.4);
+}
+
+/* ==========================================================================
+   PROJECTS SECTION
+   ========================================================================== */
+
+/* Angular cut-corner panels */
+.cybertron-mode .project-card {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+  border: none;
+  background: linear-gradient(135deg, #0a1020 0%, #0d1528 100%);
+  box-shadow: inset 0 0 0 1px var(--cyber-neon-faint);
+  transition: all 0.3s ease;
+}
+
+.cybertron-mode .project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+  border: 1px solid var(--cyber-neon-faint);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cybertron-mode .project-card:hover {
+  background: linear-gradient(135deg, #0d1528 0%, #111e38 100%);
+  box-shadow:
+    inset 0 0 0 1px var(--cyber-neon-dim),
+    0 0 20px var(--cyber-neon-faint),
+    0 4px 30px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+}
+
+.cybertron-mode .project-card:hover::before {
+  border-color: var(--cyber-neon-dim);
+}
+
+.cybertron-mode .projects-grid {
+  background: rgba(0, 240, 255, 0.06);
+  border-color: var(--cyber-neon-dim);
+}
+
+.cybertron-mode .card-head .title {
+  color: #ffffff;
+}
+
+.cybertron-mode .project-card:hover .card-head .title {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+}
+
+.cybertron-mode .project-card .tag {
+  border-color: var(--cyber-neon-dim);
+  color: var(--cyber-neon);
+  background: rgba(0, 240, 255, 0.04);
+}
+
+.cybertron-mode .project-card:hover .tag {
+  border-color: var(--cyber-neon);
+  box-shadow: 0 0 6px var(--cyber-neon-faint);
+}
+
+.cybertron-mode .project-card .dot.active {
+  background: var(--cyber-neon);
+  box-shadow: 0 0 8px var(--cyber-neon), 0 0 20px var(--cyber-neon-dim);
+  animation: cyber-pulse-neon 2s infinite;
+}
+
+.cybertron-mode .project-card .dot.progress {
+  background: var(--amber);
+  box-shadow: 0 0 8px var(--amber);
+  animation: cyber-pulse-amber 2s infinite;
+}
+
+.cybertron-mode .project-card .foot {
+  border-top-color: var(--cyber-neon-faint);
+}
+
+.cybertron-mode .project-card .foot-links a {
+  color: var(--cyber-neon);
+  border-bottom-color: var(--cyber-neon-dim);
+}
+
+.cybertron-mode .project-card .foot-links a:hover {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+}
+
+.cybertron-mode .project-card .bar {
+  background: rgba(0, 240, 255, 0.1);
+}
+
+.cybertron-mode .project-card .bar > span {
+  background: linear-gradient(90deg, var(--cyber-neon), var(--amber));
+  box-shadow: 0 0 6px var(--cyber-neon-dim);
+}
+
+@keyframes cyber-pulse-neon {
+  0%, 100% { box-shadow: 0 0 4px var(--cyber-neon); }
+  50% { box-shadow: 0 0 12px var(--cyber-neon), 0 0 24px var(--cyber-neon-dim); }
+}
+
+@keyframes cyber-pulse-amber {
+  0%, 100% { box-shadow: 0 0 4px var(--amber); }
+  50% { box-shadow: 0 0 12px var(--amber), 0 0 20px rgba(255, 107, 43, 0.3); }
+}
+
+/* ==========================================================================
+   SKILLS SECTION
+   ========================================================================== */
+
+.cybertron-mode .skills-right-col {
+  border-style: solid;
+  border-color: var(--cyber-neon-dim);
+  background: rgba(0, 240, 255, 0.02);
+  box-shadow: 0 0 12px var(--cyber-neon-faint);
+}
+
+.cybertron-mode .skills-right-title {
+  color: var(--cyber-neon);
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.2);
+  border-bottom-color: var(--cyber-neon-dim);
+  border-bottom-style: solid;
+}
+
+.cybertron-mode .skills-table th {
+  color: var(--cyber-neon);
+  border-bottom-color: var(--cyber-neon-dim);
+  text-shadow: 0 0 4px rgba(0, 240, 255, 0.15);
+}
+
+.cybertron-mode .skills-table tr:not(:last-child) td {
+  border-bottom-color: rgba(0, 240, 255, 0.05);
+}
+
+.cybertron-mode .status-running {
+  color: var(--cyber-neon);
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.3);
+}
+
+.cybertron-mode .status-not-found {
+  color: var(--cyber-magenta);
+  text-shadow: 0 0 6px rgba(255, 45, 149, 0.3);
+}
+
+/* ==========================================================================
+   CONTACT SECTION
+   ========================================================================== */
+
+.cybertron-mode .email-clicker {
+  border-bottom-color: var(--cyber-neon-dim);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+}
+
+.cybertron-mode .email-clicker:hover {
+  border-bottom-color: var(--cyber-neon);
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.cybertron-mode .contact-link {
+  border-color: var(--cyber-neon-dim);
+  color: var(--cyber-neon);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+  background: rgba(0, 240, 255, 0.03);
+  transition: all 0.25s ease;
+}
+
+.cybertron-mode .contact-link:hover {
+  background: rgba(0, 240, 255, 0.08);
+  box-shadow: 0 0 16px var(--cyber-neon-faint);
+  opacity: 1;
+}
+
+.cybertron-mode .contact-description {
+  border-top-color: var(--cyber-neon-dim);
+}
+
+.cybertron-mode .runaway-btn {
+  border-color: var(--cyber-neon);
+  color: var(--cyber-neon);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% 100%,
+    10px 100%,
+    0 calc(100% - 10px)
+  );
+}
+
+.cybertron-mode .runaway-btn:hover {
+  background: var(--cyber-neon);
+  color: #050a12;
+  box-shadow: 0 0 20px var(--cyber-neon-dim);
+}
+
+.cybertron-mode .contact-footer {
+  border-top-color: var(--cyber-neon-dim);
+}
+
+.cybertron-mode .copied-toast {
+  background: var(--cyber-neon);
+  color: #050a12;
+  box-shadow: 0 0 12px var(--cyber-neon-dim);
+}
+
+/* ==========================================================================
+   NAVIGATION & GLOBAL UI
+   ========================================================================== */
+
+/* Dot navigation — energy nodes */
+.cybertron-mode .dot-nav-item {
+  border-color: var(--cyber-neon-dim);
+  box-shadow: 0 0 4px var(--cyber-neon-faint);
+  transition: all 0.3s ease;
+}
+
+.cybertron-mode .dot-nav-item:hover {
+  border-color: var(--cyber-neon);
+  box-shadow: 0 0 10px var(--cyber-neon-dim);
+}
+
+.cybertron-mode .dot-nav-item.active {
+  background: var(--cyber-neon);
+  border-color: var(--cyber-neon);
+  box-shadow:
+    0 0 8px var(--cyber-neon),
+    0 0 20px var(--cyber-neon-dim);
+  animation: cyber-node-pulse 2.5s infinite;
+}
+
+@keyframes cyber-node-pulse {
+  0%, 100% {
+    box-shadow: 0 0 6px var(--cyber-neon), 0 0 12px var(--cyber-neon-dim);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--cyber-neon), 0 0 28px var(--cyber-neon-dim);
+  }
+}
+
+/* Slide counter — neon glow */
+.cybertron-mode .slide-counter {
+  color: var(--cyber-neon);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+}
+
+/* Theme toggle button — angular border */
+.cybertron-mode #theme-toggle-btn {
+  border-color: var(--cyber-neon-dim) !important;
+  color: var(--cyber-neon) !important;
+  box-shadow: 0 0 8px var(--cyber-neon-faint);
+}
+
+.cybertron-mode #theme-toggle-btn:hover {
+  border-color: var(--cyber-neon) !important;
+  box-shadow: 0 0 14px var(--cyber-neon-dim);
+}
+
+.cybertron-mode .theme-toggle-dot {
+  background: var(--cyber-neon) !important;
+  box-shadow: 0 0 6px var(--cyber-neon);
+}
+
+/* ==========================================================================
+   AVATAR
+   ========================================================================== */
+
+.cybertron-mode .avatar-circle {
+  border-color: var(--cyber-neon-dim) !important;
+  box-shadow: 0 0 20px var(--cyber-neon-faint), 0 0 40px rgba(0, 240, 255, 0.05);
+}
+
+/* ==========================================================================
+   LABELS & TYPOGRAPHY OVERRIDES
+   ========================================================================== */
+
+.cybertron-mode .label {
+  color: var(--cyber-neon);
+  text-shadow: 0 0 4px rgba(0, 240, 255, 0.15);
+  opacity: 0.7;
+  letter-spacing: 0.15em;
+}
+
+.cybertron-mode .crumb {
+  color: var(--cyber-neon) !important;
+  text-shadow: 0 0 4px rgba(0, 240, 255, 0.15);
+}
+
+/* ==========================================================================
+   MODAL OVERRIDES (if opened in Cybertron mode)
+   ========================================================================== */
+
+.cybertron-mode .modal-backdrop {
+  background: rgba(0, 10, 18, 0.9);
+}
+
+.cybertron-mode .modal-content {
+  background: #0a1020;
+  border: 1px solid var(--cyber-neon-dim);
+  box-shadow: 0 0 30px var(--cyber-neon-faint), 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   INTERACTIVE BACKGROUND CANVAS
+   ========================================================================== */
+
+.cybertron-mode .bg-canvas {
+  opacity: 0.4;
+}
+
+/* ==========================================================================
+   TRANSITION ENTRANCE ANIMATION
+   ========================================================================== */
+
+/* When cybertron-mode is first activated, flash the borders */
+.cybertron-mode .slide-inner {
+  animation: cyber-enter 0.8s ease-out;
+}
+
+@keyframes cyber-enter {
+  0% {
+    box-shadow: inset 0 0 60px rgba(0, 240, 255, 0.15);
+  }
+  100% {
+    box-shadow: inset 0 0 0 transparent;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .cybertron-mode body::after {
+    animation: none;
+  }
+  .cybertron-mode .dot-nav-item.active {
+    animation: none;
+  }
+  .cybertron-mode .project-card .dot.active,
+  .cybertron-mode .project-card .dot.progress {
+    animation: none;
+  }
+  .cybertron-mode .slide-inner {
+    animation: none;
+  }
+}
