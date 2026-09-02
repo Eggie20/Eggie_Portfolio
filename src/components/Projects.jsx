@@ -7,11 +7,9 @@ const PROJECTS_DATA = [
     title: "Magic AI Studio",
     role: "Lead Developer & Designer",
     tags: ["React", "Vite", "ONNX Runtime", "WebGPU"],
-    filled: 8,
-    statusLabel: "In Progress",
+    statusLabel: "In progress",
+    progressPercent: 55,
     hoverText: '"Runs on ONNX and sheer determination."',
-    gridClass: "",
-    style: { gridColumn: "span 2" },
     link: "https://github.com/Eggie20",
     github: "https://github.com/Eggie20",
     images: [
@@ -46,11 +44,8 @@ const PROJECTS_DATA = [
     title: "Civil Service Exam Reviewer",
     role: "Lead Full-Stack Developer",
     tags: ["React", "Vite", "TypeScript", "SQLite"],
-    filled: 8,
     statusLabel: "Active",
     hoverText: '"Comprehensive Civil Service Exam mobile simulation & interactive study portal."',
-    gridClass: "",
-    style: { gridColumn: "span 1" },
     link: "https://github.com/Eggie20",
     github: "https://github.com/Eggie20",
     images: [
@@ -79,11 +74,8 @@ const PROJECTS_DATA = [
     title: "DTR Attendance & Computation System",
     role: "Full-Stack Architect",
     tags: ["React", "Vite", "FastAPI", "Python", "SQLite"],
-    filled: 9,
     statusLabel: "Active",
     hoverText: '"Automated Daily Time Record computation engine and biometric attendance portal."',
-    gridClass: "",
-    style: { gridColumn: "span 1" },
     link: "https://github.com/Eggie20",
     github: "https://github.com/Eggie20",
     images: [
@@ -110,11 +102,8 @@ const PROJECTS_DATA = [
     title: "Codex Reference Library",
     role: "Lead Developer & Designer",
     tags: ["React", "Vite", "Vanilla CSS", "Design System"],
-    filled: 9,
     statusLabel: "Active",
     hoverText: '"A curated frontend component system and interactive UI design reference library."',
-    gridClass: "",
-    style: { gridColumn: "span 1" },
     link: "https://github.com/Eggie20",
     github: "https://github.com/Eggie20",
     images: [
@@ -148,11 +137,8 @@ const PROJECTS_DATA = [
     title: "MagTable — Kaon Mag Food Delivery",
     role: "Lead Full-Stack Developer",
     tags: ["React", "Vite", "FastAPI", "Leaflet", "Turf.js", "Podman"],
-    filled: 10,
     statusLabel: "Done",
     hoverText: '"Mobile-first food ordering platform with Leaflet geofenced delivery corridor."',
-    gridClass: "",
-    style: { gridColumn: "span 1" },
     link: "https://github.com/Eggie20",
     github: "https://github.com/Eggie20",
     images: [
@@ -177,11 +163,8 @@ const PROJECTS_DATA = [
     title: "My Github Repo",
     role: "Owner / Maintainer",
     tags: ["Git", "Shell Scripts", "Markdown"],
-    filled: 10,
     statusLabel: "Active",
     hoverText: '"The official hub of my open-source repositories and development projects."',
-    gridClass: "",
-    style: { gridColumn: "span 1" },
     link: "https://github.com/Eggie20",
     github: "https://github.com/Eggie20",
     images: [],
@@ -197,7 +180,6 @@ const PROJECTS_DATA = [
         title: "My Legacy Portfolio",
         role: "Sole Creator",
         tags: ["HTML5", "Vanilla CSS", "JavaScript"],
-        filled: 10,
         statusLabel: "Archived",
         hoverText: '"My previous personal portfolio website showcase."',
         link: "https://eggie20.github.io/My_Portfolio/",
@@ -284,38 +266,8 @@ const renderFallbackSVG = (num, imgIdx, totalCount = 4) => {
     );
   }
 
-  // Earthquake Monitor & Analyzer combined SVGs
-  if (num === "06") {
-    if (imgIdx < 4) {
-      // Map view
-      return (
-        <svg viewBox="0 0 100 60" style={{ width: '100%', height: '100%', stroke: strokeColor, strokeWidth: '0.6', fill: 'none', opacity: 0.6 }}>
-          <text x="50" y="8" fontSize="4.5" fontFamily="var(--font-mono)" textAnchor="middle" style={{ stroke: 'none', fill: 'var(--text)', fontWeight: 'bold' }}>MONITOR: ACTIVE_EPICENTERS</text>
-          <circle cx="50" cy="32" r="18" />
-          <circle cx="50" cy="32" r="10" />
-          <circle cx="50" cy="32" r="3" style={{ fill: 'var(--text)' }} />
-          <circle cx="75" cy="20" r="4" strokeDasharray="1,1" />
-          <circle cx="30" cy="45" r="6" strokeDasharray="1,1" />
-          <line x1="50" y1="14" x2="50" y2="50" />
-          <line x1="32" y1="32" x2="68" y2="32" />
-          <text x="50" y="56" fontSize="4" fontFamily="var(--font-mono)" textAnchor="middle" style={{ stroke: 'none', fill: 'var(--text)' }}>[{viewStr}]</text>
-        </svg>
-      );
-    } else {
-      // Time-series view
-      return (
-        <svg viewBox="0 0 100 60" style={{ width: '100%', height: '100%', stroke: strokeColor, strokeWidth: '0.6', fill: 'none', opacity: 0.6 }}>
-          <text x="50" y="8" fontSize="4.5" fontFamily="var(--font-mono)" textAnchor="middle" style={{ stroke: 'none', fill: 'var(--text)', fontWeight: 'bold' }}>TS_ANALYSIS: SEISMIC</text>
-          <path d="M 5 30 L 20 30 L 25 15 L 30 45 L 35 25 L 40 35 L 45 30 L 50 30 L 53 5 L 56 55 L 59 10 L 62 48 L 65 28 L 68 32 L 72 30 L 95 30" />
-          <line x1="5" y1="30" x2="95" y2="30" strokeDasharray="1,2" opacity="0.3" />
-          <text x="50" y="56" fontSize="4" fontFamily="var(--font-mono)" textAnchor="middle" style={{ stroke: 'none', fill: 'var(--text)' }}>[{viewStr}]</text>
-        </svg>
-      );
-    }
-  }
-
   // GitHub SVGs
-  if (num === "07") {
+  if (num === "06") {
     return (
       <svg viewBox="0 0 100 60" style={{ width: '100%', height: '100%', stroke: strokeColor, strokeWidth: '0.6', fill: 'none', opacity: 0.6 }}>
         <line x1="25" y1="12" x2="25" y2="48" />
@@ -325,14 +277,14 @@ const renderFallbackSVG = (num, imgIdx, totalCount = 4) => {
         <path d="M 25 18 Q 60 22 60 34 L 60 44" />
         <circle cx="60" cy="44" r="3" style={{ fill: 'var(--bg)' }} />
         <text x="32" y="20" fontSize="4.5" fontFamily="var(--font-mono)" style={{ stroke: 'none', fill: 'var(--text)' }}>main</text>
-        <text x="68" y="46" fontSize="4.5" fontFamily="var(--font-mono)" style={{ stroke: 'none', fill: 'var(--text)' }}>feat/ocr</text>
+        <text x="68" y="46" fontSize="4.5" fontFamily="var(--font-mono)" style={{ stroke: 'none', fill: 'var(--text)' }}>feat/main</text>
         <text x="50" y="56" fontSize="4" fontFamily="var(--font-mono)" textAnchor="middle" style={{ stroke: 'none', fill: 'var(--text)' }}>[{viewStr}]</text>
       </svg>
     );
   }
 
   // My Legacy Portfolio SVGs
-  if (num === "07A") {
+  if (num === "06A") {
     return (
       <svg viewBox="0 0 100 60" style={{ width: '100%', height: '100%', stroke: strokeColor, strokeWidth: '0.6', fill: 'none', opacity: 0.6 }}>
         <rect x="10" y="10" width="80" height="42" rx="2" ry="2" />
@@ -394,7 +346,6 @@ const renderProjectDesign = (proj, imgIdx = 0, isModal = false) => {
 };
 
 export default function Projects({ currentSlide = 2 }) {
-  const [hoveredIdx, setHoveredIdx] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
   const [selectedSubProject, setSelectedSubProject] = useState(null);
   const [galleryIdx, setGalleryIdx] = useState(0);
@@ -406,15 +357,46 @@ export default function Projects({ currentSlide = 2 }) {
     }
   }, [currentSlide]);
 
-  const renderProgressBar = (filled, label) => {
-    const empty = 10 - filled;
+  const renderStatus = (proj) => {
+    const status = proj.statusLabel || "Active";
+    const normalized = status.toLowerCase();
+
+    if (normalized.includes("progress")) {
+      const percent = proj.progressPercent || 55;
+      return (
+        <div className="status">
+          <span className="dot progress"></span>
+          <span>In progress</span>
+          <div className="bar">
+            <span style={{ width: `${percent}%` }}></span>
+          </div>
+        </div>
+      );
+    }
+
+    if (normalized.includes("done")) {
+      return (
+        <div className="status">
+          <span className="dot done"></span>
+          <span>Done</span>
+        </div>
+      );
+    }
+
+    if (normalized.includes("archived")) {
+      return (
+        <div className="status">
+          <span className="dot archived"></span>
+          <span>Archived</span>
+        </div>
+      );
+    }
+
     return (
-      <span className="project-status" style={{ fontVariantNumeric: 'tabular-nums' }}>
-        [
-        <span>{"█".repeat(filled)}</span>
-        <span style={{ opacity: 0.15 }}>{"█".repeat(empty)}</span>
-        {`] ${label}`}
-      </span>
+      <div className="status">
+        <span className="dot active"></span>
+        <span>Active</span>
+      </div>
     );
   };
 
@@ -429,159 +411,47 @@ export default function Projects({ currentSlide = 2 }) {
       <div className="slide-header-brand">eggie.dev / v1.0</div>
 
       <div className="projects-layout" style={{ margin: 'auto 0' }}>
-        <div className="label" style={{ marginBottom: '20px' }}>// projects / active_workspace</div>
+        <div className="crumb">// PROJECTS / ACTIVE_WORKSPACE — {PROJECTS_DATA.length} total</div>
 
-        <div className="bento-grid">
-          {PROJECTS_DATA.map((proj, idx) => {
-            const isClickable = (proj.link && proj.link !== '#') || (proj.github && proj.github !== '#');
-            const isWide = proj.style && (proj.style.gridColumn.includes('span 2') || proj.style.gridColumn.includes('span 3'));
-
-            if (isWide) {
-              return (
-                <div
-                  key={idx}
-                  className={`bento-card wide-layout ${proj.gridClass}`}
-                  style={{
-                    ...proj.style,
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => handleCardClick(proj)}
-                  onMouseEnter={() => setHoveredIdx(idx)}
-                  onMouseLeave={() => setHoveredIdx(null)}
-                >
-                  <div className="bento-card-body">
-                    <div className="bento-card-left">
-                      <div className="bento-card-top">
-                        <div className="bento-card-title-row" style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                          <div className="project-num" style={{ fontSize: '16px', opacity: 0.4, minWidth: '24px', paddingTop: '4px' }}>{proj.num}</div>
-                          <div>
-                            <h3 className="project-title" style={{ display: 'flex', alignItems: 'center' }}>
-                              {proj.title}
-                              {isClickable && <span style={{ opacity: 0.5, fontSize: '13px', marginLeft: '4px' }}>⧉</span>}
-                            </h3>
-                            <div className="project-role">{proj.role}</div>
-                          </div>
-                        </div>
-                        <div className="project-tags">
-                          {proj.tags.map((tag, tIdx) => (
-                            <span key={tIdx} className="project-tag">{tag}</span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bento-card-right">
-                      {renderProjectDesign(proj, 0)}
-                    </div>
-                  </div>
-
-                  <div className="bento-card-bottom" style={{ gap: '16px' }}>
-                    <div style={{ minHeight: '16px' }}>
-                      {hoveredIdx === idx ? (
-                        <div className="project-one-liner" style={{ fontSize: '11px' }}>{proj.hoverText}</div>
-                      ) : (
-                        renderProgressBar(proj.filled, proj.statusLabel)
-                      )}
-                    </div>
-
-                    {/* Separated Outbound Link Directory */}
-                    <div style={{ display: 'flex', gap: '8px', zIndex: 100, flexShrink: 0 }} onClick={(e) => e.stopPropagation()}>
-                      {proj.link && proj.link !== '#' && (
-                        <a
-                          href={proj.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ color: 'inherit', textDecoration: 'underline', fontSize: '10px', fontFamily: 'var(--font-mono)' }}
-                        >
-                          [WEBSITE ↗]
-                        </a>
-                      )}
-                      {proj.github && proj.github !== '#' && (
-                        <a
-                          href={proj.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ color: 'inherit', textDecoration: 'underline', fontSize: '10px', fontFamily: 'var(--font-mono)' }}
-                        >
-                          [GITHUB ↗]
-                        </a>
-                      )}
-                    </div>
-                  </div>
+        <div className="projects-grid">
+          {PROJECTS_DATA.map((proj, idx) => (
+            <div
+              key={idx}
+              className="project-card"
+              onClick={() => handleCardClick(proj)}
+            >
+              <div className="card-head">
+                <div>
+                  <div className="idx">{proj.num}</div>
+                  <p className="title">{proj.title}</p>
+                  <div className="role">{proj.role}</div>
                 </div>
-              );
-            }
+                <div className="link-out">↗</div>
+              </div>
 
-            // Narrow Card Layout (span 1)
-            return (
-              <div
-                key={idx}
-                className={`bento-card narrow-layout ${proj.gridClass}`}
-                style={{
-                  ...proj.style,
-                  cursor: 'pointer'
-                }}
-                onClick={() => handleCardClick(proj)}
-                onMouseEnter={() => setHoveredIdx(idx)}
-                onMouseLeave={() => setHoveredIdx(null)}
-              >
-                <div className="bento-card-top">
-                  <div className="bento-card-title-row" style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                    <div className="project-num" style={{ fontSize: '14px', opacity: 0.4, minWidth: '20px', paddingTop: '2px' }}>{proj.num}</div>
-                    <div>
-                      <h3 className="project-title" style={{ display: 'flex', alignItems: 'center' }}>
-                        {proj.title}
-                        {isClickable && <span style={{ opacity: 0.5, fontSize: '13px', marginLeft: '4px' }}>⧉</span>}
-                      </h3>
-                      <div className="project-role">{proj.role}</div>
-                    </div>
-                  </div>
-                  <div className="project-tags">
-                    {proj.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="project-tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
+              <div className="tags">
+                {proj.tags.map((tag, tIdx) => (
+                  <span key={tIdx} className="tag">{tag}</span>
+                ))}
+              </div>
 
-                <div className="bento-card-middle">
-                  {renderProjectDesign(proj, 0)}
-                </div>
+              <div className="thumb">
+                {renderProjectDesign(proj, 0)}
+              </div>
 
-                <div className="bento-card-bottom" style={{ flexDirection: 'column', gap: '16px' }}>
-                  <div style={{ minHeight: '16px' }}>
-                    {hoveredIdx === idx ? (
-                      <div className="project-one-liner" style={{ fontSize: '11px' }}>{proj.hoverText}</div>
-                    ) : (
-                      renderProgressBar(proj.filled, proj.statusLabel)
-                    )}
-                  </div>
-
-                  {/* Separated Outbound Link Directory */}
-                  <div style={{ display: 'flex', gap: '8px', zIndex: 100, flexShrink: 0, justifyContent: 'flex-end' }} onClick={(e) => e.stopPropagation()}>
-                    {proj.link && proj.link !== '#' && (
-                      <a
-                        href={proj.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: 'inherit', textDecoration: 'underline', fontSize: '10px', fontFamily: 'var(--font-mono)' }}
-                      >
-                        [WEBSITE ↗]
-                      </a>
-                    )}
-                    {proj.github && proj.github !== '#' && (
-                      <a
-                        href={proj.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: 'inherit', textDecoration: 'underline', fontSize: '10px', fontFamily: 'var(--font-mono)' }}
-                      >
-                        [GITHUB ↗]
-                      </a>
-                    )}
-                  </div>
+              <div className="foot">
+                {renderStatus(proj)}
+                <div className="foot-links" onClick={(e) => e.stopPropagation()}>
+                  {proj.link && proj.link !== '#' && (
+                    <a href={proj.link} target="_blank" rel="noopener noreferrer">Website</a>
+                  )}
+                  {proj.github && proj.github !== '#' && (
+                    <a href={proj.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+                  )}
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -599,8 +469,8 @@ export default function Projects({ currentSlide = 2 }) {
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Header */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid var(--border)', paddingBottom: '12px', gap: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                     {selectedSubProject && (
                       <button
                         onClick={() => {
@@ -614,17 +484,19 @@ export default function Projects({ currentSlide = 2 }) {
                           border: '1px solid var(--border)',
                           padding: '4px 8px',
                           fontSize: '11px',
-                          cursor: 'pointer'
+                          cursor: 'pointer',
+                          whiteSpace: 'nowrap',
+                          flexShrink: 0
                         }}
                       >
                         [← BACK]
                       </button>
                     )}
                     <div>
-                      <span className="mono" style={{ fontSize: '10px', opacity: 0.5 }}>
+                      <span className="mono" style={{ fontSize: '10px', opacity: 0.5, display: 'block', marginBottom: '2px' }}>
                         {selectedSubProject ? `REPOSITORY SHOWCASE // ${selectedSubProject.num}` : `IMAGE VIEWER // ${activeProject.num}`}
                       </span>
-                      <h2 style={{ fontSize: '20px', fontWeight: 500, fontFamily: 'var(--font-mono)' }}>{currentProject.title}</h2>
+                      <h2 style={{ fontSize: 'clamp(16px, 3.5vw, 20px)', fontWeight: 500, fontFamily: 'var(--font-mono)', lineHeight: 1.3 }}>{currentProject.title}</h2>
                     </div>
                   </div>
                   <button
@@ -636,7 +508,9 @@ export default function Projects({ currentSlide = 2 }) {
                       border: '1px solid var(--border)',
                       padding: '4px 8px',
                       fontSize: '11px',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      flexShrink: 0,
+                      whiteSpace: 'nowrap'
                     }}
                   >
                     [CLOSE]
@@ -668,7 +542,8 @@ export default function Projects({ currentSlide = 2 }) {
                             alignItems: 'center',
                             justifyContent: 'center',
                             overflow: 'hidden',
-                            opacity: isActive ? 1 : 0.5
+                            opacity: isActive ? 1 : 0.5,
+                            flexShrink: 0
                           }}
                         >
                           {img && (
@@ -696,29 +571,27 @@ export default function Projects({ currentSlide = 2 }) {
                 )}
 
                 {/* Slider Controls */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
-                  <div>
+                <div className="modal-slider-controls">
+                  <div className="modal-slider-caption">
                     {currentProject.imageCaptions && currentProject.imageCaptions[galleryIdx] ? (
-                      <span style={{ opacity: 0.8 }}>{currentProject.imageCaptions[galleryIdx]}</span>
+                      <span style={{ opacity: 0.85 }}>{currentProject.imageCaptions[galleryIdx]}</span>
                     ) : (
                       <span style={{ opacity: 0.5 }}>Screenshot Preview</span>
                     )}
                   </div>
 
                   {currentProject.images && currentProject.images.length > 1 && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div className="modal-slider-nav">
                       <button
                         onClick={() => setGalleryIdx((prev) => (prev - 1 + currentProject.images.length) % currentProject.images.length)}
-                        style={{ background: 'transparent', color: 'var(--text)', border: '1px solid var(--border)', cursor: 'pointer', padding: '2px 6px', fontSize: '9px' }}
                       >
                         [PREV]
                       </button>
-                      <span style={{ fontSize: '10px', opacity: 0.7 }}>
+                      <span className="modal-slider-counter">
                         {galleryIdx + 1} / {currentProject.images.length}
                       </span>
                       <button
                         onClick={() => setGalleryIdx((prev) => (prev + 1) % currentProject.images.length)}
-                        style={{ background: 'transparent', color: 'var(--text)', border: '1px solid var(--border)', cursor: 'pointer', padding: '2px 6px', fontSize: '9px' }}
                       >
                         [NEXT]
                       </button>
@@ -781,28 +654,19 @@ export default function Projects({ currentSlide = 2 }) {
                 )}
 
                 {/* Modal Link Directory (Separated Outbound Links at bottom) */}
-                <div style={{
-                  borderTop: '1px solid var(--border)',
-                  paddingTop: '10px',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  fontSize: '10px',
-                  fontFamily: 'var(--font-mono)'
-                }}>
-                  <span style={{ opacity: 0.4 }}>
+                <div className="modal-footer-dir">
+                  <span className="modal-footer-path">
                     {selectedSubProject 
                       ? `DIR: PROJECTS\\${activeProject.title.replace(/\s+/g, '_').toUpperCase()}\\${selectedSubProject.title.replace(/\s+/g, '_').toUpperCase()}\\`
                       : `DIR: PROJECTS\\${activeProject.title.replace(/\s+/g, '_').toUpperCase()}\\`
                     }
                   </span>
-                  <div style={{ display: 'flex', gap: '10px' }}>
+                  <div className="modal-footer-links">
                     {currentProject.link && currentProject.link !== '#' ? (
                       <a
                         href={currentProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: 'inherit', textDecoration: 'underline' }}
                       >
                         [WEBSITE ↗]
                       </a>
@@ -814,7 +678,6 @@ export default function Projects({ currentSlide = 2 }) {
                         href={currentProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: 'inherit', textDecoration: 'underline' }}
                       >
                         [GITHUB ↗]
                       </a>
