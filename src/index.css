@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-  --bg: #090b0e;
-  --panel: #0f1318;
-  --line: rgba(255, 255, 255, 0.08);
-  --text: #f0f2f5;
-  --muted: #8b949e;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-active: rgba(255, 255, 255, 0.35);
+  --bg: #12151c;
+  --panel: #1a1f29;
+  --line: rgba(255, 255, 255, 0.11);
+  --text: #f0f3f7;
+  --muted: #94a1b2;
+  --border: rgba(255, 255, 255, 0.11);
+  --border-active: rgba(255, 255, 255, 0.45);
   --accent: #7fd9c4;
   --amber: #e8b04b;
   --done: #6fbf73;
-  --accent-hover: rgba(255, 255, 255, 0.04);
+  --accent-hover: rgba(255, 255, 255, 0.06);
   --font-mono: 'Space Mono', monospace;
   --font-body: 'Inter', sans-serif;
   color-scheme: dark;
@@ -1339,7 +1339,8 @@ html {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(10, 14, 20, 0.75);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
